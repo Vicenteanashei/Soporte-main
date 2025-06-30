@@ -9,16 +9,22 @@ import org.springframework.stereotype.Service;
 import Perfulandia.Soporte.model.CategoriaTicket;
 import Perfulandia.Soporte.model.Ticket;
 import Perfulandia.Soporte.repository.TicketRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Service
 public class TicketService {
+    private static final Logger logger = LoggerFactory.getLogger(TicketService.class);
 
     @Autowired
     private TicketRepository ticketRepository;
 
     public Ticket crearTicket(Ticket ticket) {
-        return ticketRepository.save(ticket);
+        logger.info("Intentando guardar ticket: {}", ticket);
+        Ticket saved = ticketRepository.save(ticket);
+        logger.info("Ticket guardado: {}", saved);
+        return saved;
     }
 
     public List<Ticket> obtenerTodosLosTickets() {
