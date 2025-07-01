@@ -39,6 +39,8 @@ public class Ticket {
     private String asignadoA;
 
     @Column(nullable = false)
-    @Schema(description = "Usuario que creó el ticket", example = "ana.sanchez")
+    
+    
+    
     private String creadoPor;
 }
